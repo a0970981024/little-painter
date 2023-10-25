@@ -1,0 +1,32 @@
+﻿<Window x:Class="小畫家.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:小畫家"
+        mc:Ignorable="d"
+        Title="小畫家" Height="450" Width="800">
+    <DockPanel LastChildFill="False">
+        <Menu DockPanel.Dock="Top" Height="34">
+            <MenuItem Header="檔案" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34">
+                <MenuItem Header="新畫布" Height="25" FontFamily="Cascadia Mono SemiBold"/>
+                <MenuItem Header="儲存畫布" Height="25" FontFamily="Cascadia Mono SemiBold"/>
+            </MenuItem>
+            <MenuItem Header="形狀" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34"/>
+        </Menu>
+        <ToolBarTray Height="40" DockPanel.Dock="Top">
+            <ToolBar Height="40" Width="400" Background="#FFF59F9F" >
+                <Label Content="筆刷色彩" Width="80" VerticalContentAlignment="Center" FontSize="14" FontFamily="Cascadia Mono SemiBold" HorizontalContentAlignment="Center"/>
+                
+            </ToolBar>
+            <ToolBar Height="40" Width="400" Background="#FF95D0EA" >
+                
+            </ToolBar>
+        </ToolBarTray>
+        <Canvas x:Name="canvas1" DockPanel.Dock="Top" Background="#FFEFEDD5" Height="300" />
+        <StackPanel Height="60" DockPanel.Dock="Bottom" Background="#FFCFE4CB"/>
+        
+        
+    </DockPanel>
+
+</Window>
