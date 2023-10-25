@@ -2,11 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:小畫家"
         mc:Ignorable="d"
-        Title="小畫家" Height="450" Width="800">
-    <DockPanel LastChildFill="False">
+        Title="小畫家" Height="470" Width="800">
+    <DockPanel LastChildFill="False" Margin="0,0,0,9">
         <Menu DockPanel.Dock="Top" Height="34">
             <MenuItem Header="檔案" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34">
                 <MenuItem Header="新畫布" Height="25" FontFamily="Cascadia Mono SemiBold"/>
@@ -17,14 +18,20 @@
         <ToolBarTray Height="40" DockPanel.Dock="Top">
             <ToolBar Height="40" Width="400" Background="#FFF59F9F" >
                 <Label Content="筆刷色彩" Width="80" VerticalContentAlignment="Center" FontSize="14" FontFamily="Cascadia Mono SemiBold" HorizontalContentAlignment="Center"/>
-                
+                <xctk:ColorPicker x:Name="colorpicker1" Width="116" DisplayColorAndName="True" SelectedColorChanged="colorpicker1_SelectedColorChanged"/>
+                <Slider x:Name="thickenessSlider" Width="80" Minimum="1" Maximum="10" Value="1" VerticalAlignment="Center" IsSnapToTickEnabled="True" ValueChanged="thickenessSlider_ValueChanged"/>
+                <Label Content="{Binding Value, ElementName=thickenessSlider}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Width="40"/>
             </ToolBar>
             <ToolBar Height="40" Width="400" Background="#FF95D0EA" >
-                
+                <RadioButton Content="直線" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" IsChecked="True" Tag="Line"/>
+                <RadioButton Content="矩形" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Rectangle"/>
+                <RadioButton Content="橢圓" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Ellipse"/>
             </ToolBar>
         </ToolBarTray>
-        <Canvas x:Name="canvas1" DockPanel.Dock="Top" Background="#FFEFEDD5" Height="300" />
-        <StackPanel Height="60" DockPanel.Dock="Bottom" Background="#FFCFE4CB"/>
+        <Canvas x:Name="canvas1" DockPanel.Dock="Top" Background="#FFEFEDD5" Height="320" MouseLeftButtonDown="canvas1_MouseLeftButtonDown" MouseLeftButtonUp="canvas1_MouseLeftButtonUp" MouseMove="canvas1_MouseMove" />
+        <StatusBar Height="45" DockPanel.Dock="Bottom" Background="#FFEDFFEC">
+            <Label x:Name="coordinateLabel" Width="200" VerticalAlignment="Center" Content="座標點" FontFamily="Cascadia Mono SemiBold" Margin="50,0,50,0"/>
+        </StatusBar>
         
         
     </DockPanel>
