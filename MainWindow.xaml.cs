@@ -55,6 +55,29 @@ namespace 小畫家
             canvas1.Cursor = Cursors.Cross;
             //MessageBox.Show($"({start.X},{start.Y})");
             displayStatus();
+
+            switch (shapeType)
+            {
+                case "Line": 
+                    Line line = new Line
+                    {
+                        Stroke = Brushes.Gray,
+                        StrokeThickness = 1,
+                        X1 = start.X,
+                        Y1 = start.Y,
+                        X2 = dest.X,
+                        Y2 = dest.Y
+                    };
+                    canvas1.Children.Add(line);
+                    break;
+                case "Rectangle":
+                    break;
+                case "Ellipse":
+                    break;
+                default:
+                    break;
+
+            }
         }
 
         private void canvas1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -62,18 +85,56 @@ namespace 小畫家
             dest = e.GetPosition(canvas1);
             canvas1.Cursor = Cursors.Arrow;
             displayStatus();
+
+            switch (shapeType)
+            {
+                case "Line":
+                    var line = canvas1.Children.OfType<Line>().LastOrDefault();
+                    Brush stroke = new SolidColorBrush(strokeColor);
+                    line.Stroke = stroke;
+                    line.StrokeThickness = strokeThickness;
+                    break;
+                case "Rectangle":
+                    break;
+                case "Ellipse":
+                    break;
+                default:
+                    break;
+
+            }
         }
 
         private void canvas1_MouseMove(object sender, MouseEventArgs e)
         {
-            //if(MouseButtonState.Pressed == )
-            dest = e.GetPosition(canvas1);
-            displayStatus();
+            
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                dest = e.GetPosition(canvas1);
+                displayStatus();
+
+                switch (shapeType)
+                {
+                    case "Line":
+                        var line = canvas1.Children.OfType<Line>().LastOrDefault();
+                        line.X2 = dest.X;
+                        line.Y2 = dest.Y;
+                        break;
+                    case "Rectangle":
+                        break;
+                    case "Ellipse":
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+            
         }
 
         private void displayStatus()
         {
             coordinateLabel.Content = $"座標點:({Math.Round(start.X)},{Math.Round(start.Y)}) - ({Math.Round(dest.X)},{Math.Round(dest.Y)})";
+            shapeLabe.Content = $"Line: {canvas1.Children.OfType<Line>().Count()}";
         }
     }
 }

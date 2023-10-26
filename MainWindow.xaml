@@ -30,10 +30,11 @@
         </ToolBarTray>
         <Canvas x:Name="canvas1" DockPanel.Dock="Top" Background="#FFEFEDD5" Height="320" MouseLeftButtonDown="canvas1_MouseLeftButtonDown" MouseLeftButtonUp="canvas1_MouseLeftButtonUp" MouseMove="canvas1_MouseMove" />
         <StatusBar Height="45" DockPanel.Dock="Bottom" Background="#FFEDFFEC">
-            <Label x:Name="coordinateLabel" Width="200" VerticalAlignment="Center" Content="座標點" FontFamily="Cascadia Mono SemiBold" Margin="50,0,50,0"/>
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="coordinateLabel" Width="200" VerticalAlignment="Center" Content="座標點" FontFamily="Cascadia Mono SemiBold" Margin="100,0,0,0"/>
+                <Label x:Name="shapeLabe" Width="300"/>
+                
+            </StackPanel>
         </StatusBar>
-        
-        
     </DockPanel>
-
 </Window>
