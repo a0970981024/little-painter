@@ -18,7 +18,10 @@
         <ToolBarTray Height="40" DockPanel.Dock="Top">
             <ToolBar Height="40" Width="400" Background="#FFF59F9F" >
                 <Label Content="筆刷色彩" Width="80" VerticalContentAlignment="Center" FontSize="14" FontFamily="Cascadia Mono SemiBold" HorizontalContentAlignment="Center"/>
-                <xctk:ColorPicker x:Name="colorpicker1" Width="116" DisplayColorAndName="True" SelectedColorChanged="colorpicker1_SelectedColorChanged"/>
+                <xctk:ColorPicker x:Name="colorpicker1" Width="100" DisplayColorAndName="True" SelectedColorChanged="colorpicker1_SelectedColorChanged"/>
+                <Label Content="填滿色彩" Width="80" VerticalContentAlignment="Center" FontSize="14" FontFamily="Cascadia Mono SemiBold" HorizontalContentAlignment="Center"/>
+                <xctk:ColorPicker x:Name="fillcolorpicker1" Width="100" DisplayColorAndName="True" SelectedColorChanged="fillcolorpicker1_SelectedColorChanged"/>
+                
                 <Slider x:Name="thickenessSlider" Width="80" Minimum="1" Maximum="10" Value="1" VerticalAlignment="Center" IsSnapToTickEnabled="True" ValueChanged="thickenessSlider_ValueChanged"/>
                 <Label Content="{Binding Value, ElementName=thickenessSlider}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Width="40"/>
             </ToolBar>
