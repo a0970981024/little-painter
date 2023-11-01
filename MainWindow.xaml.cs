@@ -87,6 +87,17 @@ namespace 小畫家
                     canvas1.Children.Add(rect);
                     break;
                 case "Ellipse":
+                    var ellipse = new Ellipse
+                    {
+                        Stroke = stroke,
+                        Fill = fill,
+                        StrokeThickness = 1,
+                        Width = 50,
+                        Height = 100
+                    };
+                    ellipse.SetValue(Canvas.LeftProperty, start.X);
+                    ellipse.SetValue(Canvas.TopProperty, start.Y);
+                    canvas1.Children.Add(ellipse);
                     break;
                 default:
                     break;
@@ -115,8 +126,13 @@ namespace 小畫家
                     var rect = canvas1.Children.OfType<Rectangle>().LastOrDefault();
                     rect.Stroke = stroke;
                     rect.Fill = fill;
+                    rect.StrokeThickness = strokeThickness;
                     break;
                 case "Ellipse":
+                    var ellipse = canvas1.Children.OfType<Ellipse>().LastOrDefault();
+                    ellipse.Stroke = stroke;
+                    ellipse.Fill = fill;
+                    ellipse.StrokeThickness = strokeThickness;
                     break;
                 default:
                     break;
@@ -156,6 +172,11 @@ namespace 小畫家
                         rect.SetValue(Canvas.TopProperty, origin.Y );
                         break;
                     case "Ellipse":
+                        var ellipse = canvas1.Children.OfType<Ellipse>().LastOrDefault();
+                        ellipse.Width = width;
+                        ellipse.Height = height;
+                        ellipse.SetValue(Canvas.LeftProperty, origin.X);
+                        ellipse.SetValue(Canvas.TopProperty, origin.Y);
                         break;
                     default:
                         break;
@@ -170,12 +191,19 @@ namespace 小畫家
             fillColor = (Color)fillcolorpicker1.SelectedColor;
         }
 
+        private void clearMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            canvas1.Children.Clear();
+            displayStatus();
+        }
+
         private void displayStatus()
         {
             int lineCount = canvas1.Children.OfType<Line>().Count();
             int rectCount = canvas1.Children.OfType<Rectangle>().Count();
+            int ellipseCount = canvas1.Children.OfType<Ellipse>().Count();
             coordinateLabel.Content = $"座標點:({Math.Round(start.X)},{Math.Round(start.Y)}) - ({Math.Round(dest.X)},{Math.Round(dest.Y)})";
-            shapeLabe.Content = $"Line: {lineCount},Rectangle:{rectCount}";
+            shapeLabe.Content = $"Line: {lineCount},Rectangle:{rectCount},Ellipse:{ellipseCount}";
         }
     }
 }
