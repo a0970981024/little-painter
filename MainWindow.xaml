@@ -11,9 +11,9 @@
         <Menu DockPanel.Dock="Top" Height="34">
             <MenuItem Header="檔案" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34">
                 <MenuItem x:Name="clearMenuItem" Header="清除畫布" Height="25" FontFamily="Cascadia Mono SemiBold" Click="clearMenuItem_Click"/>
-                <MenuItem Header="儲存畫布" Height="25" FontFamily="Cascadia Mono SemiBold"/>
+                <MenuItem Header="儲存畫布" Height="25" FontFamily="Cascadia Mono SemiBold" Click="SaveCanvas_Click"/>
             </MenuItem>
-            <MenuItem Header="形狀" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34"/>
+            <MenuItem Header="形狀" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34" Click="SaveCanvas_Click"/>
         </Menu>
         <ToolBarTray Height="40" DockPanel.Dock="Top">
             <ToolBar Height="40" Background="#FFF59F9F" >

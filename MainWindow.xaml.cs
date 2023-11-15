@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace 小畫家
 {
@@ -264,6 +266,41 @@ namespace 小畫家
             displayStatus();
 
         }
+
+        private void SaveCanvas_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PNG Files(*.png)|*.pbg";
+            saveFileDialog.DefaultExt = ".png";
+            saveFileDialog.AddExtension = true;
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                Uri path = new Uri(saveFileDialog.FileName);
+
+                Transform transform = canvas1.LayoutTransform;
+                canvas1.LayoutTransform = null;
+
+                Size size = new Size(900, 600);
+                canvas1.Measure(size);
+                canvas1.Arrange(new Rect(size));
+
+                RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap((int)size.Width, (int)size.Height, 96d, 96d, PixelFormats.Pbgra32);
+                renderTargetBitmap.Render(canvas1);
+
+                using(FileStream outstream = new FileStream(path.LocalPath, FileMode.Create))
+                {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+                    encoder.Save(outstream);
+                }
+                canvas1.LayoutTransform = transform;
+
+            }
+
+        }
+
+       
 
         private void displayStatus()
         {
