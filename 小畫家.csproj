@@ -8,7 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="eraser.png" />
+    <None Remove="line.png" />
+    <None Remove="polyline.png" />
+    <None Remove="recycle-bin.png" />
+    <None Remove="vector %281%29.png" />
+    <None Remove="vector.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="eraser.png" />
+    <Resource Include="line.png" />
+    <Resource Include="polyline.png" />
+    <Resource Include="recycle-bin.png" />
+    <Resource Include="vector (1).png" />
+    <Resource Include="vector.png" />
   </ItemGroup>
 
 </Project>

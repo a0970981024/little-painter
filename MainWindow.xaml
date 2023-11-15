@@ -26,22 +26,34 @@
                 <Label Content="{Binding Value, ElementName=thickenessSlider}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Width="40"/>
             </ToolBar>
             <ToolBar Height="40" Width="400" Background="#FF95D0EA" >
-                <RadioButton Content="直線" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" IsChecked="True" Tag="Line"/>
-                <RadioButton Content="矩形" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Rectangle"/>
-                <RadioButton Content="橢圓" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Ellipse"/>
-                <RadioButton Content="隨意" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Polyline"/>
+                <RadioButton  Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" IsChecked="True" Tag="Line">
+                    <Image Width="25" Height="25" Source="/line.png" />
+                </RadioButton>
+                <RadioButton  Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Rectangle">
+                    <Image Width="25" Height="25" Source="/vector.png" />
+                </RadioButton>
+                <RadioButton Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Ellipse">
+                    <Image Width="25" Height="25" Source="/vector (1).png" />
+                </RadioButton>
+                <RadioButton  Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Polyline">
+                    <Image Width="25" Height="25" Source="/polyline.png" />
+                </RadioButton>
             </ToolBar>
             <ToolBar Height="40" Width="250" Background="#FFA5EFA6">
-                <Button x:Name="eraseButton" Content="刪除物件" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
-                <Button x:Name="clearButton" Content="清除畫布" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
+                <Button x:Name="eraseButton"  FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="eraseButton_Click">
+                    <Image Width="25" Height="25" Source="/eraser.png" />
+                </Button>
+                <Button x:Name="clearButton"  FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="clearButton_Click">
+                    <Image Width="25" Height="25" Source="/recycle-bin.png" />
+                </Button>
             </ToolBar>
+
         </ToolBarTray>
         <Canvas x:Name="canvas1" DockPanel.Dock="Top" Background="#FFEFEDD5" Height="320" MouseLeftButtonDown="canvas1_MouseLeftButtonDown" MouseLeftButtonUp="canvas1_MouseLeftButtonUp" MouseMove="canvas1_MouseMove" />
         <StatusBar Height="45" DockPanel.Dock="Bottom" Background="#FFEDFFEC">
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="coordinateLabel" Width="200" VerticalAlignment="Center" Content="座標點" FontFamily="Cascadia Mono SemiBold" Margin="100,0,0,0"/>
                 <Label x:Name="shapeLabe" Width="300"/>
-
             </StackPanel>
         </StatusBar>
     </DockPanel>
