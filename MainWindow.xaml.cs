@@ -99,6 +99,15 @@ namespace 小畫家
                     ellipse.SetValue(Canvas.TopProperty, start.Y);
                     canvas1.Children.Add(ellipse);
                     break;
+                case "Polyline":
+                    var polyline = new Polyline
+                    {
+                        Stroke = stroke,
+                        Fill = fill,
+                        StrokeThickness = 1,
+                    };
+                    canvas1.Children.Add(polyline);
+                    break;
                 default:
                     break;
 
@@ -133,6 +142,12 @@ namespace 小畫家
                     ellipse.Stroke = stroke;
                     ellipse.Fill = fill;
                     ellipse.StrokeThickness = strokeThickness;
+                    break;
+                case "Polyline":
+                    var polyline = canvas1.Children.OfType<Polyline>().LastOrDefault();
+                    polyline.Stroke = stroke;
+                    polyline.Fill = fill;
+                    polyline.StrokeThickness = strokeThickness;
                     break;
                 default:
                     break;
@@ -178,6 +193,10 @@ namespace 小畫家
                         ellipse.SetValue(Canvas.LeftProperty, origin.X);
                         ellipse.SetValue(Canvas.TopProperty, origin.Y);
                         break;
+                    case "Polyline":
+                        var polyline = canvas1.Children.OfType<Polyline>().LastOrDefault();
+                        polyline.Points.Add(dest);
+                        break;
                     default:
                         break;
 
@@ -202,8 +221,9 @@ namespace 小畫家
             int lineCount = canvas1.Children.OfType<Line>().Count();
             int rectCount = canvas1.Children.OfType<Rectangle>().Count();
             int ellipseCount = canvas1.Children.OfType<Ellipse>().Count();
+            int polylineCount= canvas1.Children.OfType<Polyline>().Count();
             coordinateLabel.Content = $"座標點:({Math.Round(start.X)},{Math.Round(start.Y)}) - ({Math.Round(dest.X)},{Math.Round(dest.Y)})";
-            shapeLabe.Content = $"Line: {lineCount},Rectangle:{rectCount},Ellipse:{ellipseCount}";
+            shapeLabe.Content = $"Line: {lineCount},Rectangle:{rectCount},Ellipse:{ellipseCount},Polyline:{polylineCount}";
         }
     }
 }

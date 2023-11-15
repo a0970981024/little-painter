@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:小畫家"
         mc:Ignorable="d"
-        Title="小畫家" Height="470" Width="800">
+        Title="小畫家" Height="470" Width="1200">
     <DockPanel LastChildFill="False" Margin="0,0,0,9">
         <Menu DockPanel.Dock="Top" Height="34">
             <MenuItem Header="檔案" Width ="60" FontSize="16" FontFamily="Cascadia Mono SemiBold" Height="34">
@@ -29,6 +29,11 @@
                 <RadioButton Content="直線" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" IsChecked="True" Tag="Line"/>
                 <RadioButton Content="矩形" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Rectangle"/>
                 <RadioButton Content="橢圓" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Ellipse"/>
+                <RadioButton Content="隨意" Width="50" VerticalAlignment="Center" FontSize="18" FontFamily="Cascadia Mono SemiBold" Click="ShapeButton_Click" Tag="Polyline"/>
+            </ToolBar>
+            <ToolBar Height="40" Width="250" Background="#FFA5EFA6">
+                <Button x:Name="eraseButton" Content="刪除物件" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
+                <Button x:Name="clearButton" Content="清除畫布" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
             </ToolBar>
         </ToolBarTray>
         <Canvas x:Name="canvas1" DockPanel.Dock="Top" Background="#FFEFEDD5" Height="320" MouseLeftButtonDown="canvas1_MouseLeftButtonDown" MouseLeftButtonUp="canvas1_MouseLeftButtonUp" MouseMove="canvas1_MouseMove" />
